@@ -1,0 +1,1 @@
+[21-Apr-2018 11:58:22 UTC] PHP Fatal error:  Interface 'Throwable' not found in /home/cloutfit/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/DriverException.php on line 33
