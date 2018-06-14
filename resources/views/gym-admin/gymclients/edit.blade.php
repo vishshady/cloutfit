@@ -649,7 +649,7 @@
         // begin first table
         table.dataTable({
             responsive: true,
-            "sAjaxSource": "{{ route('gym-admin.client.ajax-payments',$client->customer_id) }}",
+            "sAjaxSource": "{{ route('gym-admin.client.ajax-payments',$client->id) }}",
             bDestroy:true,
             "aoColumns": [
                 { 'sClass': 'center', "bSortable": true  },

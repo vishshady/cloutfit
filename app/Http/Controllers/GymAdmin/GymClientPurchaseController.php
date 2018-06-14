@@ -112,6 +112,7 @@ class GymClientPurchaseController extends GymAdminBaseController
 
         $this->data['title'] = "New Purchase";
         $this->data['user_id'] = $id;
+        $this->data['client_name']=GymClient::select('first_name','last_name')->where('customer_id','=',743).get();
         $business = BusinessCategory::select('categories.name', 'categories.id as id')
             ->leftJoin('categories', 'categories.id', '=', 'business_categories.category_id')
             ->where('detail_id', '=', $this->data['user']->detail_id)

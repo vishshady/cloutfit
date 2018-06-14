@@ -226,10 +226,6 @@ class AdminGymClientsController extends GymAdminBaseController
         return View::make('gym-admin.gymclients.edit', $this->data);
     }
 
-    public static function findEmailInOtherBranches($email,$detail_id){
-        $gym_client = GymClient::where('email',$email);
-    }
-
     public function update(UpdateClientRequest $request) {
         if (!$this->data['user']->can("edit_customers")) {
             return App::abort(401);
@@ -239,16 +235,6 @@ class AdminGymClientsController extends GymAdminBaseController
 
         if ($request->get('type') == 'general') {
             $gym_client = GymClient::find($id);
-            // $gym_customers = BusinessCustomer::findByCustomer($id);
-            $emails = GymClient::where('email','=',$request->email)->get();
-            if ($gym_client->email!==$request->get('email')){
-            foreach($emails as $email){
-                $customer = BusinessCustomer::findByCustomer($email->id);
-            if ($email->email===$request->get('email') && $customer->detail_id ==$this->data['user']->detail_id){
-                return Reply::error("Email ID already present");
-            }
-        }
-    }
             $gym_client->first_name = $request->get('first_name');
             $gym_client->last_name = $request->get('last_name');
             $gym_client->marital_status = $request->get('marital_status');
