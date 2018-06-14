@@ -164,14 +164,14 @@ class GymAdminBaseController extends Controller
 
     public function smsNotification($numbers, $message, $Route = 4) {
         // Your authentication key
-        $authKey = env('MSG91_API_KEY');
+        $authKey = env('219651AEeMJD5Z5b1b8fad');
 
         // Multiple mobiles numbers separated by comma
         $mobileNumber = implode(',', $numbers);
 
         // Sender ID,While using route4 sender id should be 6 characters long.
         // $senderId = "555000"; //for promotional
-        $senderId = "HPXACE";   //for transactional
+        $senderId = "CloutF";   //for transactional
 
         // Your message to send, Add URL encoding here.
         $message = urlencode($message);

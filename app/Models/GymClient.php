@@ -25,11 +25,13 @@ class GymClient extends Model implements AuthenticatableContract, CanResetPasswo
         $rules = [
             'general' => [
                 'first_name' => 'required|alpha_spaces',
-                'last_name' => 'required|alpha_spaces',
+                // 'last_name' => 'alpha_spaces',
                 'gender' => 'required',
-                'email' => 'required|email|unique:gym_clients,email,'.$id.',id,detail_id,'.$businessID,
+                // 'email' => 'required|email|unique:gym_clients,email,'.$id.',id,detail_id,'.$businessID,
+                'email' => 'required',
                 'dob' => 'required',
-                'mobile' => 'required|unique:gym_clients,mobile,'.$id.',id,detail_id,'.$businessID,
+                'mobile' => 'required',
+                // 'mobile' => 'required|unique:gym_clients,mobile,'.$id.',id,detail_id,'.$businessID,
                 'age' => 'numeric',
                 'marital_status' => 'required',
                 'height_inches' => 'numeric',

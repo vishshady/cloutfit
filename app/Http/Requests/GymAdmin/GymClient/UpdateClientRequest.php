@@ -27,10 +27,12 @@ class UpdateClientRequest extends CoreRequest
         if($this->request->get('type') == 'general') {
             $rules = [
                 'first_name' => 'required|alpha_spaces',
-                'last_name' => 'required|alpha_spaces',
+                // 'last_name' => 'alpha_spaces',
                 'gender' => 'required',
-                'email' => 'required|email|unique:gym_clients,email,'.$this->request->get('id'),
-                'mobile' => 'required|unique:gym_clients,mobile,'.$this->request->get('id'),
+                'email' => 'required',
+                // 'email' => 'required|email|unique:gym_clients,email,'.$this->request->get('id'),
+                'mobile' => 'required',
+                // 'mobile' => 'required|unique:gym_clients,mobile,'.$this->request->get('id'),
                 'marital_status' => 'required',
             ];
         } else {

@@ -128,7 +128,7 @@ class GymAccountSetupController extends GymAdminBaseController
         ];
         $this->addPromotionDatabase($data);
 
-        return Reply::redirect(route('gym-admin.account-setup.subscription',$gymClient), 'Congrats! Client is added successfully.');
+        return Reply::redirect(route('gym-admin.account-setup.subscription'), 'Congrats! Client is added successfully.');
     }
 
     public function subscription() {

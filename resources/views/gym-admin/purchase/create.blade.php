@@ -161,7 +161,7 @@
                                         @foreach($clients as $client)
                                             <option
                                                     @if($user_id != 0)
-                                                        @if($user_id == $client->id)
+                                                        @if($user_id == $client->customer_id)
                                                             selected
                                                         @endif
                                                     @endif

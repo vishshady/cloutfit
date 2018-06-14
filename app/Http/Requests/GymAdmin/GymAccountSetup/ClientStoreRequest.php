@@ -36,13 +36,17 @@ class ClientStoreRequest extends CoreRequest
 
         if($this->has('client_id')) {
             $newRules = [
-                'email' => 'required|email|unique:gym_clients,email,'.$this->client_id,
-                'mobile' => 'required|unique:gym_clients,mobile,'.$this->client_id,
+                'email' => 'required',
+                // 'email' => 'required|email|unique:gym_clients,email,'.$this->client_id,
+                'mobile' => 'required',
+                // 'mobile' => 'required|unique:gym_clients,mobile,'.$this->client_id,
             ];
         } else {
             $newRules = [
-                'email' => 'required|email|unique:gym_clients,email,NULL',
-                'mobile' => 'required|unique:gym_clients,mobile,NULL',
+                'email' => 'required',
+                // 'email' => 'required|email|unique:gym_clients,email,NULL',
+                'mobile' => 'required',
+                // 'mobile' => 'required|unique:gym_clients,mobile,NULL',
             ];
         }
 

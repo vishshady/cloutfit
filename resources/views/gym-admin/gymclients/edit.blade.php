@@ -148,7 +148,7 @@
                                             <!-- PERSONAL INFO TAB -->
                                             <div class="tab-pane active" id="tab_1_1">
                                                 {!! Form::open(['id'=>'personal_details','class'=>'ajax-form','method'=>'POST']) !!}
-                                                <input type="hidden" name="id" value="{{$client->id}}">
+                                                <input type="hidden" name="id" value="{{$client->customer_id}}">
                                                 <input type="hidden" name="type" value="general">
 
                                                     <div class="row">
@@ -649,7 +649,7 @@
         // begin first table
         table.dataTable({
             responsive: true,
-            "sAjaxSource": "{{ route('gym-admin.client.ajax-payments',$client->id) }}",
+            "sAjaxSource": "{{ route('gym-admin.client.ajax-payments',$client->customer_id) }}",
             bDestroy:true,
             "aoColumns": [
                 { 'sClass': 'center', "bSortable": true  },

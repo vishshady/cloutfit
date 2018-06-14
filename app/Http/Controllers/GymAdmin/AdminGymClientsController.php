@@ -186,7 +186,7 @@ class AdminGymClientsController extends GymAdminBaseController
         $this->data['emailText'] = $eText;
         $this->data['url'] = '';
 
-        Mail::to($email)->send(new CredentialMail($this->data));
+        //Mail::to($email)->send(new CredentialMail($this->data));
 
         return Reply::redirect(route('gym-admin.client.index'), "Client information added successfully");
     }
@@ -226,6 +226,10 @@ class AdminGymClientsController extends GymAdminBaseController
         return View::make('gym-admin.gymclients.edit', $this->data);
     }
 
+    public static function findEmailInOtherBranches($email,$detail_id){
+        $gym_client = GymClient::where('email',$email);
+    }
+
     public function update(UpdateClientRequest $request) {
         if (!$this->data['user']->can("edit_customers")) {
             return App::abort(401);
@@ -235,6 +239,16 @@ class AdminGymClientsController extends GymAdminBaseController
 
         if ($request->get('type') == 'general') {
             $gym_client = GymClient::find($id);
+            // $gym_customers = BusinessCustomer::findByCustomer($id);
+            $emails = GymClient::where('email','=',$request->email)->get();
+            if ($gym_client->email!==$request->get('email')){
+            foreach($emails as $email){
+                $customer = BusinessCustomer::findByCustomer($email->id);
+            if ($email->email===$request->get('email') && $customer->detail_id ==$this->data['user']->detail_id){
+                return Reply::error("Email ID already present");
+            }
+        }
+    }
             $gym_client->first_name = $request->get('first_name');
             $gym_client->last_name = $request->get('last_name');
             $gym_client->marital_status = $request->get('marital_status');
@@ -290,10 +304,10 @@ class AdminGymClientsController extends GymAdminBaseController
             return App::abort(401);
         }
 
-        $client = GymClient::where('id','=',$id)->get();
+        $client = GymClient::find($id);
         $client->delete();
-       
-        $customer = BusinessCustomer::findByCustomer($id);
+
+        $customer = BusinessCustomer::where('customer_id',$id);
         $customer->delete();
 
         return Reply::redirect(route('gym-admin.client.index'), "Clients Removed successfully");

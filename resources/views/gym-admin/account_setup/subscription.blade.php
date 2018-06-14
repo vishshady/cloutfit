@@ -94,12 +94,11 @@
 
 
                                 <div class="form-group form-md-line-input">
-                                    <!-- <select  class="bs-select form-control" data-live-search="true" data-size="8" name="user_id" id="user_id">
+                                    <select  class="bs-select form-control" data-live-search="true" data-size="8" name="user_id" id="user_id">
                                         @foreach($clients as $client)
                                             <option @if(count($subscription) > 0 && $subscription->client_id == $client->id) selected @endif value="{{$client->id}}">{{$client->first_name}}&nbsp;{{$client->last_name}}</option>
                                         @endforeach
-                                    </select> -->
-                                  sss  <<label>{{$gymClient->first_name}}&nbsp;{{$gymClient->last_name}}</label>
+                                    </select>
                                     <label for="title">Client Name</label>
                                     <span class="help-block"></span>
                                 </div>
